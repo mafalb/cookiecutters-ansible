@@ -19,5 +19,5 @@
 split collection into namespace and collection_name
 """
 
-{{ cookiecutter.update({"namespace": cookiecutter.collection.split('.')[0]}) }}
-{{ cookiecutter.update({"collection_name": cookiecutter.collection.split('.')[1]}) }}
+{{ cookiecutter.update({"namespace": cookiecutter.collection.split('.')[0]}) }}        # noqa: E501,F821,E201,E202
+{{ cookiecutter.update({"collection_name": cookiecutter.collection.split('.')[1]}) }}  # noqa: E501,F821,E201,E202
