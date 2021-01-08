@@ -25,6 +25,11 @@ jobs:
     - name: checkout
       uses: actions/checkout@v2
 
+    - name: install dependencies
+      run: |
+        ansible-galaxy collection install mafalb.ansible
+        ansible-playbook -D molecule/install_molecule.yml -t all,debug
+
     - name: tests
       run: |
         pwd
