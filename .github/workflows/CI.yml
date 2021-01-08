@@ -33,7 +33,7 @@ jobs:
       run: |
         pwd
         ls -l
-        export PATH=$PATH:~/local/bin
+        export PATH=$PATH:~/.local/bin
         bash tests/lint.sh
 
 ...
