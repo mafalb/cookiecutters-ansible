@@ -33,6 +33,6 @@ jobs:
       run: |
         pwd
         ls -l
-        bash tests/lint.sh
+        PATH=$PATH:~/local/bin bash tests/lint.sh
 
 ...
