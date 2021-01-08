@@ -5,7 +5,7 @@ dependency:
   name: galaxy
 
 driver:
-{% if cookiecutter.molecule_driver = 'docker' %}
+{% if cookiecutter.molecule_driver == 'docker' %}
   name: docker
 {% else %}
   name: delegated

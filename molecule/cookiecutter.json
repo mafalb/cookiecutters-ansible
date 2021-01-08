@@ -4,7 +4,7 @@
     "hosted_by": [
         "generic",
         "github"
-    ]
+    ],
     "molecule_driver": [
         "docker"
     ]

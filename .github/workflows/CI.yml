@@ -35,5 +35,6 @@ jobs:
         ls -l
         export PATH=$PATH:~/.local/bin
         bash tests/lint.sh
+        bash tests/httpd.sh
 
 ...

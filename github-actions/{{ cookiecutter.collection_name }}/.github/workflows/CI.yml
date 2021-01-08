@@ -85,13 +85,13 @@ jobs:
           version: buster
 
     env:
-      
+{% raw %}      
       ANSIBLE_VERSION: ${{ matrix.ansible_version }}
       CI_CONTAINER_IMAGE: ${{ matrix.distribution }}
       CI_CONTAINER_TAG: ${{ matrix.version }}
       PY_COLORS: 1
       ANSIBLE_FORCE_COLOR: 1
-      
+{% endraw %} 
     defaults:
       run:
         working-directory: ansible_collections/{{ cookiecutter.collection_namespace }}/{{ cookiecutter.collection_name }}
@@ -105,7 +105,7 @@ jobs:
 
     - name: install dependencies
       run: ansible-galaxy collection install -r molecule/requirements.yml
-
+{% raw %}
     - name: install molecule
       run: ansible-playbook -D molecule/install_molecule.yml -e molecule_ansible_version=${{ matrix.ansible_version }} -t all,debug
 
@@ -113,7 +113,7 @@ jobs:
       run: |
         source ~/.virtualenvs/molecule/bin/activate
         ansible --version | grep "^ansible ${{ matrix.ansible_version }}"
-
+{% endraw %}
     - name: molecule tests
       run: |
         source ~/.virtualenvs/molecule/bin/activate
