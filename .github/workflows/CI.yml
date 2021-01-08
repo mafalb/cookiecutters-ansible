@@ -27,8 +27,7 @@ jobs:
 
     - name: install dependencies
       run: |
-        ansible-galaxy collection install mafalb.ansible
-        ansible-playbook -D molecule/install_molecule.yml -t all,debug
+        pip3 install cookiecutter flake8
 
     - name: tests
       run: |
