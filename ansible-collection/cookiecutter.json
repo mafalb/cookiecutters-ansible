@@ -1,0 +1,14 @@
+{
+    "collection_namespace": "mafalb",
+    "collection_name": "httpd",
+    "author_name": "Markus Falb",
+    "author_email": "markus.falb@mafalb.at",
+    "license": [
+        "GPL-3.0-or-later"
+    ],
+    "repository_url": "https://example.com/",
+    "hosted_by": [
+	"generic",
+        "github"
+    ]
+}

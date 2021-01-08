@@ -1,0 +1,11 @@
+{
+    "collection_namespace": "mafalb",
+    "collection_name": "httpd",
+    "hosted_by": [
+        "generic",
+        "github"
+    ]
+    "molecule_driver": [
+        "docker"
+    ]
+}
