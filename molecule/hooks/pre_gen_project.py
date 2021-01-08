@@ -16,17 +16,8 @@
 # with cookiecutters-ansible. If not, see <https://www.gnu.org/licenses/>.
 
 """
-This dumps the cookiecutter context into a file for consumption of
-subsequent invocation of cookiecutter
+split collection into namespace and collection_name
 """
 
-import yaml
-
-# cookiecutter imported via jinja2 is an OrderedDict
-from collections import OrderedDict  	# noqa: F401
-
-context = {{ cookiecutter }}  		# noqa: F821,E201,E202
-
-default_context = {'default_context': dict(context)}
-default_context_file = open("cookiecutter.yaml", "w")
-default_context_file.write(yaml.dump(default_context))
+{{ cookiecutter.update({"namespace": cookiecutter.collection.split('.')[0]}) }}
+{{ cookiecutter.update({"collection_name": cookiecutter.collection.split('.')[1]}) }}

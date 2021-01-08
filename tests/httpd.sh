@@ -8,3 +8,6 @@ cookiecutter -f --config-file /tmp/httpd/cookiecutter.yaml --no-input molecule -
 
 echo creating github-actions
 cookiecutter -f --config-file /tmp/httpd/cookiecutter.yaml --no-input github-actions -o /tmp
+
+echo creating a role
+cookiecutter -f --config-file /tmp/httpd/cookiecutter.yaml --no-input -o /tmp/httpd/roles role role=example.httpd.server

@@ -1,6 +1,5 @@
 default_context:
-    collection_namespace: "example"
-    collection_name: "httpd"
+    collection: "example.httpd"
     author_name: "Joe Doe"
     author_email: "gugu@example.com"
     license: "GPL-3.0-or-later"

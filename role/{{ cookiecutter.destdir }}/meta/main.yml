@@ -1,0 +1,36 @@
+# vim: set ft=yaml ts=2 expandtab:
+---
+
+galaxy_info:
+  author: {{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>
+  description: Ansible role {{ cookiecutter.role }}
+  license: {{ cookiecutter.license }}
+  min_ansible_version: 2.9
+
+  # https://galaxy.ansible.com/api/v1/platforms/
+  #
+  platforms:
+  - name: EL
+    versions:
+    - 7
+    - 8
+  - name: Fedora
+    versions:
+    - 32
+    - 33
+  - name: Ubuntu
+    versions:
+    - xenial
+    - bionic
+    - focal
+  - name: Debian
+    versions:
+    - stretch
+    - buster
+
+  galaxy_tags:
+  - {{ cookiecutter.role.split('.')[-1] }}
+
+dependencies: []
+
+...

@@ -1,12 +1,12 @@
 {
-    "collection_namespace": "mafalb",
-    "collection_name": "httpd",
+    "collection": "",
+    "destdir": "{{ cookiecutter.collection.split('.')[-1] }}",
     "author_name": "Markus Falb",
     "author_email": "markus.falb@mafalb.at",
     "license": [
         "GPL-3.0-or-later"
     ],
-    "repository_url": "https://example.com/",
+    "repository_url": "",
     "hosted_by": [
 	"generic",
         "github"
