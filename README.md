@@ -8,7 +8,7 @@
 cookiecutters for ansible development
 
 ```bash
-$ cookiecutter https://github.com/mafalb/cookiecutters-ansible/collection
+$ cookiecutter https://github.com/mafalb/cookiecutters-ansible --directory collection
 ```
 
 This creates not only the directories and files for the ansible collection but also a cookiecutter.yaml with the context
@@ -24,13 +24,15 @@ default_context:
     hosted_by: "github"
 ```
 
-e.g.:
+e.g. in the shell:
 
 ```bash
-$ cookiecutter --config-file httpd/cookiecutter.yaml --no-input https://github.com/mafalb/cookiecutters-ansible/molecule
-$ cookiecutter --config-file httpd/cookiecutter.yaml --no-input https://github.com/mafalb/cookiecutters-ansible/github-actions
+cookiecutter --config-file httpd/cookiecutter.yaml --no-input https://github.com/mafalb/cookiecutters-ansible --directory molecule
+cookiecutter --config-file httpd/cookiecutter.yaml --no-input https://github.com/mafalb/cookiecutters-ansible --directory github-actions
+cookiecutter --config-file httpd/cookiecutter.yaml --no-input https://github.com/mafalb/cookiecutters-ansible --directory role
 ```
 
 ## License
 
+Copyright (c) 2021 Markus Falb
 GPLv3 or later
