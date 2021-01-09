@@ -1,6 +1,6 @@
 {
-    "collection": "",
-    "destdir": "{{ cookiecutter.collection.split('.')[-1] }}",
+    "role": "",
+    "destdir": "{{ cookiecutter.role if (cookiecutter.role.split('.')|length == 2) else cookiecutter.role.split('.')[-1] }}",
     "author_name": "",
     "author_email": "",
     "license": [

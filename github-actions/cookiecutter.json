@@ -1,5 +1,5 @@
 {
-    "collection_namespace": "mafalb",
-    "collection_name": "httpd",
+    "collection": "",
+    "destdir": "{{ cookiecutter.collection.split('.')[-1] }}",
     "hosted_by": "github"
 }

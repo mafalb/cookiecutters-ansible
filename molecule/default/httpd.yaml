@@ -1,0 +1,7 @@
+default_context:
+    collection: "example.httpd"
+    author_name: "Joe Doe"
+    author_email: "gugu@example.com"
+    license: "GPL-3.0-or-later"
+    repository_url: "https://github.com/example/ansible-collection-httpd"
+    hosted_by: "github"

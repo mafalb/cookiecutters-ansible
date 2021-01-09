@@ -1,11 +1,8 @@
 {
-    "collection_namespace": "mafalb",
-    "collection_name": "httpd",
-    "hosted_by": [
-        "generic",
-        "github"
-    ],
+    "collection": "",
+    "destdir": "{{ cookiecutter.collection.split('.')[-1] }}",
     "molecule_driver": [
-        "docker"
+        "docker",
+        "delegated"
     ]
 }

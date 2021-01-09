@@ -20,21 +20,32 @@ jobs:
 
     runs-on: ubuntu-20.04
 
+    env:
+      PY_COLORS: 1
+      ANSIBLE_FORCE_COLOR: 1
+
     steps:
 
     - name: checkout
       uses: actions/checkout@v2
 
     - name: install dependencies
-      run: |
-        pip3 install cookiecutter flake8
+      run: ansible-galaxy collection install -r molecule/requirements.yml
 
-    - name: tests
+    - name: install molecule
+      run: ansible-playbook -D molecule/install_molecule.yml -t all,debug
+
+    - name: molecule tests
       run: |
-        pwd
-        ls -l
-        export PATH=$PATH:~/.local/bin
-        bash tests/lint.sh
-        bash tests/httpd.sh
+        source ~/.virtualenvs/molecule/bin/activate
+        molecule test
+
+    - name: verify the result
+      run: |
+        source ~/.virtualenvs/molecule/bin/activate
+        cd /tmp/httpd
+        ansible-lint -v molecule/default/*.yml
+        yamllint .
+        flake8 -v
 
 ...
