@@ -1,0 +1,17 @@
+# vim: set ft=yaml ts=2 expandtab:
+---
+
+- name: verify
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+  - name: ansible-lint the result
+    shell: |
+      cd /tmp/httpd
+      ansible-lint -v
+      ansible-lint -v roles/httpd
+      yamllint .
+
+...

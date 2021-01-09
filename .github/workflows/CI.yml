@@ -26,15 +26,21 @@ jobs:
       uses: actions/checkout@v2
 
     - name: install dependencies
-      run: |
-        pip3 install cookiecutter flake8
+      run: ansible-galaxy collection install -r molecule/requirements.yml
 
-    - name: tests
+    - name: install molecule
+      run: ansible-playbook -D molecule/install_molecule.yml -t all,debug
+
+    - name: molecule tests
       run: |
-        pwd
-        ls -l
-        export PATH=$PATH:~/.local/bin
-        tests/lint.sh
-        ansible-playbook tests/converge.yml
+        source ~/.virtualenvs/molecule/bin/activate
+        molecule test
+
+    - name: verify the result
+      run: |
+        cd /tmp/httpd
+        ansible-lint -v molecule/default/*.yml
+        yamllint .
+        flake8 -v
 
 ...

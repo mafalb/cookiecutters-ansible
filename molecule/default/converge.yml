@@ -1,0 +1,32 @@
+# vim: set ft=yaml ts=2 expandtab:
+---
+
+- hosts: all
+  tasks:
+
+  - name: create an ansible collection
+    command: cookiecutter --config-file httpd.yaml --no-input ../../collection -o /tmp
+    args:
+      creates: /tmp/httpd
+
+  - name: create a molecule scenario
+    command: cookiecutter -f --config-file /tmp/httpd/cookiecutter.yaml --no-input ../../molecule -o /tmp
+    args:
+      creates: /tmp/httpd/molecule
+
+  - name: create github-actions
+    command: cookiecutter -f --config-file /tmp/httpd/cookiecutter.yaml --no-input ../../github-actions -o /tmp
+    args:
+      creates: /tmp/httpd/.github/workflows/CI.yml
+
+  - name: create a role
+    command: cookiecutter -f --config-file /tmp/httpd/cookiecutter.yaml --no-input -o /tmp/httpd/roles ../../role role=example.httpd.server
+    args:
+      creates: /tmp/httpd/roles/httpd
+
+  - name: create a standalone role
+    command: cookiecutter --config-file standalone-role.yaml --no-input ../../role -o /tmp role=example.roleX
+    args:
+      creates: /tmp/example.roleX
+
+...

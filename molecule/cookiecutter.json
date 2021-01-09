@@ -1,11 +1,8 @@
 {
     "collection": "",
     "destdir": "{{ cookiecutter.collection.split('.')[-1] }}",
-    "hosted_by": [
-        "generic",
-        "github"
-    ],
     "molecule_driver": [
-        "docker"
+        "docker",
+        "delegated"
     ]
 }
