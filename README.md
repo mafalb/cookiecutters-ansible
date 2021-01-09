@@ -5,10 +5,10 @@
 |master|![master branch](https://github.com/mafalb/cookiecutters-ansible/workflows/CI/badge.svg?branch=master)|
 |dev|![dev branch](https://github.com/mafalb/cookiecutters-ansible/workflows/CI/badge.svg?branch=dev)|
 
-cookiecutters for ansible development
+create a basic ansible collection:
 
 ```bash
-$ cookiecutter https://github.com/mafalb/cookiecutters-ansible --directory collection
+cookiecutter https://github.com/mafalb/cookiecutters-ansible --directory collection
 ```
 
 This creates not only the directories and files for the ansible collection but also a cookiecutter.yaml with the context
@@ -27,12 +27,30 @@ default_context:
 e.g. in the shell:
 
 ```bash
-cookiecutter --config-file httpd/cookiecutter.yaml --no-input https://github.com/mafalb/cookiecutters-ansible --directory molecule
-cookiecutter --config-file httpd/cookiecutter.yaml --no-input https://github.com/mafalb/cookiecutters-ansible --directory github-actions
-cookiecutter --config-file httpd/cookiecutter.yaml --no-input https://github.com/mafalb/cookiecutters-ansible --directory role
+cookiecutter\
+ --overwrite-if-exists\
+ --config-file httpd/cookiecutter.yaml --no-input\
+ https://github.com/mafalb/cookiecutters-ansible --directory molecule
+```
+
+files for molecule were added to the existing collection
+
+```bash
+cookiecutter\
+ --overwrite-if-exists\
+ --config-file httpd/cookiecutter.yaml --no-input\
+ https://github.com/mafalb/cookiecutters-ansible --directory github-actions
+```
+
+```bash
+cookiecutter\
+ --overwrite-if-exists\
+ --config-file httpd/cookiecutter.yaml --no-input\
+ https://github.com/mafalb/cookiecutters-ansible --directory role
 ```
 
 ## License
 
-Copyright (c) 2021 Markus Falb
-GPLv3 or later
+Copyright (c) 2021 Markus Falb <markus.falb@mafalb.at>
+
+GPL-3.0-or-later
