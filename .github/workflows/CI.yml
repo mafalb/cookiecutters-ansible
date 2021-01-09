@@ -34,10 +34,6 @@ jobs:
         pwd
         ls -l
         export PATH=$PATH:~/.local/bin
-#        ansible-lint -v tests/converge.yml
         ansible-playbook tests/converge.yml
-#        bash tests/lint.sh
-#        bash tests/httpd.sh
-#        bash tests/standalone-role.sh
 
 ...
