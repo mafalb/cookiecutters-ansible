@@ -36,5 +36,6 @@ jobs:
         export PATH=$PATH:~/.local/bin
         bash tests/lint.sh
         bash tests/httpd.sh
+        bash tests/standalone-role.sh
 
 ...
