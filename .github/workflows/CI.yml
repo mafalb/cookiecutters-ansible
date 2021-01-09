@@ -20,6 +20,10 @@ jobs:
 
     runs-on: ubuntu-20.04
 
+    env:
+      PY_COLORS: 1
+      ANSIBLE_FORCE_COLOR: 1
+
     steps:
 
     - name: checkout
@@ -38,6 +42,7 @@ jobs:
 
     - name: verify the result
       run: |
+        source ~/.virtualenvs/molecule/bin/activate
         cd /tmp/httpd
         ansible-lint -v molecule/default/*.yml
         yamllint .
