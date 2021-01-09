@@ -94,14 +94,14 @@ jobs:
 {% endraw %} 
     defaults:
       run:
-        working-directory: ansible_collections/{{ cookiecutter.collection_namespace }}/{{ cookiecutter.collection_name }}
+        working-directory: ansible_collections/{{ cookiecutter.collection }}
 
     steps:
 
-    - name: checkout collection {{ cookiecutter.collection_namespace }}.{{ cookiecutter.collection_name }}
+    - name: checkout collection {{ cookiecutter.collection }}
       uses: actions/checkout@v2
       with:
-        path: ansible_collections/{{ cookiecutter.collection_namespace }}/{{ cookiecutter.collection_name }}
+        path: ansible_collections/{{ cookiecutter.namespace }}/{{ cookiecutter.collection_name }}
 
     - name: install dependencies
       run: ansible-galaxy collection install -r molecule/requirements.yml
