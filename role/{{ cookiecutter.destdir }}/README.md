@@ -1,6 +1,6 @@
 # Ansible Role {{ cookiecutter.role }}
 
-{% if cookiecutter.hosted_by == 'github' -%}
+{% if cookiecutter.hosted_by == 'github' and cookiecutter.role.split('.')|length == 2 -%}
 |||
 |---|---|
 |master|![master branch]({{ cookiecutter.repository_url }}/workflows/CI/badge.svg?branch=master)|

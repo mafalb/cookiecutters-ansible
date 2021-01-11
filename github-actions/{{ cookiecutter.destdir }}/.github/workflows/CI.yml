@@ -94,7 +94,7 @@ jobs:
 {% endraw %} 
     defaults:
       run:
-        working-directory: ansible_collections/{{ cookiecutter.collection }}
+        working-directory: ansible_collections/{{ cookiecutter.namespace }}/{{ cookiecutter.collection_name }}
 
     steps:
 
