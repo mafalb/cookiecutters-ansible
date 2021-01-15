@@ -1,4 +1,9 @@
 # vim: set ft=yaml ts=2 expandtab:
 ---
 
+- name: include OS specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+  - "{{ ansible_os_family }}.yml"
+
 ...
