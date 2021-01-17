@@ -1,7 +1,7 @@
 {% if cookiecutter.molecule_driver == 'docker' %}
-*******
+********************************
 Docker driver installation guide
-*******
+********************************
 
 Requirements
 ============
@@ -22,9 +22,9 @@ widely recommended `'--user' flag`_ when invoking ``pip``.
 
     $ pip install 'molecule[docker]'
 {% else %}
-*******
+***********************************
 Delegated driver installation guide
-*******
+***********************************
 
 Requirements
 ============
