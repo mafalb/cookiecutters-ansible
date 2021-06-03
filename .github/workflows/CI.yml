@@ -45,8 +45,8 @@ jobs:
     - name: verify the result
       run: |
         source ~/.virtualenvs/molecule/bin/activate
-        cd /tmp/httpd
-        ansible-lint -v molecule/default/*.yml
+        cd /tmp/ansible_collections/httpd
+        ANSIBLE_COLLECTIONS_PATH=../../../ ansible-lint -v ansible-lint -v molecule/default/*.yml
         yamllint .
         flake8 -v
 

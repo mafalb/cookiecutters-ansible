@@ -10,7 +10,7 @@
 
   roles:
 
-  - role: {{ cookiecutter.collection }}.roleX
+  - role: {{ cookiecutter.collection }}.role1
 
   tasks:
 
