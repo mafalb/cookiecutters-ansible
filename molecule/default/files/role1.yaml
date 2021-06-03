@@ -1,0 +1,11 @@
+default_context:
+  _template: ../../collection
+  author_email: gugu@example.com
+  author_name: Joe Doe
+  collection: example.httpd
+  collection_name: httpd
+  destdir: role1
+  hosted_by: github
+  license: GPL-3.0-or-later
+  namespace: example
+  repository_url: https://github.com/example/ansible-collection-httpd

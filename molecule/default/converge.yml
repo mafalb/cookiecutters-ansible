@@ -5,28 +5,28 @@
   tasks:
 
   - name: create an ansible collection
-    command: cookiecutter --config-file httpd.yaml --no-input ../../collection -o /tmp
+    command: cookiecutter --config-file files/httpd.yaml --no-input ../../collection -o /tmp/ansible_collections/example
     args:
-      creates: /tmp/httpd
+      creates: /tmp/ansible_collections/example/httpd
 
   - name: create a molecule scenario
-    command: cookiecutter -f --config-file /tmp/httpd/cookiecutter.yaml --no-input ../../molecule -o /tmp
+    command: cookiecutter -f --config-file /tmp/ansible_collections/example/httpd/cookiecutter.yaml --no-input ../../molecule -o /tmp/ansible_collections/example
     args:
-      creates: /tmp/httpd/molecule
+      creates: /tmp/ansible_collections/example/httpd/molecule
 
   - name: create github-actions
-    command: cookiecutter -f --config-file /tmp/httpd/cookiecutter.yaml --no-input ../../github-actions -o /tmp
+    command: cookiecutter -f --config-file /tmp/ansible_collections/example/httpd/cookiecutter.yaml --no-input ../../github-actions -o /tmp/ansible_collections/example
     args:
-      creates: /tmp/httpd/.github/workflows/CI.yml
+      creates: /tmp/ansible_collections/example/httpd/.github/workflows/CI.yml
 
   - name: create a role
-    command: cookiecutter -f --config-file /tmp/httpd/cookiecutter.yaml --no-input -o /tmp/httpd/roles ../../role role=example.httpd.server
+    command: cookiecutter -f --config-file files/role1.yaml --no-input -o /tmp/ansible_collections/example/httpd/roles ../../role role=example.httpd.role1
     args:
-      creates: /tmp/httpd/roles/httpd
+      creates: /tmp/ansible_collections/example/httpd/roles/role1
 
   - name: create a standalone role
-    command: cookiecutter --config-file standalone-role.yaml --no-input ../../role -o /tmp role=example.roleX
+    command: cookiecutter --config-file files/standalone-role.yaml --no-input ../../role -o /tmp role=example.role1
     args:
-      creates: /tmp/example.roleX
+      creates: /tmp/example.role1
 
 ...
