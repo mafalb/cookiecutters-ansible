@@ -27,6 +27,6 @@
   - name: create a standalone role
     command: cookiecutter --config-file files/standalone-role.yaml --no-input ../../role -o /tmp role=example.role1
     args:
-      creates: /tmp/example.rolex
+      creates: /tmp/example.role1
 
 ...
