@@ -3,13 +3,16 @@
 
 dependency:
   name: galaxy
+  options:
+    role-file: idontexist.yml   # avoid warning while running molecule
+    requirements-file: molecule/default/requirements.yml
 
 lint: |
   set -e
   pwd
   ! grep -r "no_log: false" .
   yamllint .
-  ansible-lint -v molecule/default/*.yml
+  ansible-lint -v molecule/default/*.yml --exclude molecule/default/molecule.yml
   flake8 -v
 
 driver:
