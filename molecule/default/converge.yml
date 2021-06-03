@@ -10,17 +10,17 @@
       creates: /tmp/ansible_collections/example/httpd
 
   - name: create a molecule scenario
-    command: cookiecutter -f --config-file /tmp/ansible_collections/example/httpd/cookiecutter.yaml --no-input ../../molecule -o /tmp/ansible_collections/example/httpd
+    command: cookiecutter -f --config-file /tmp/ansible_collections/example/httpd/cookiecutter.yaml --no-input ../../molecule -o /tmp/ansible_collections/example
     args:
       creates: /tmp/ansible_collections/example/httpd/molecule
 
   - name: create github-actions
-    command: cookiecutter -f --config-file /tmp/ansible_collections/example/httpd/cookiecutter.yaml --no-input ../../github-actions -o /tmp/ansible_collections/example/httpd
+    command: cookiecutter -f --config-file /tmp/ansible_collections/example/httpd/cookiecutter.yaml --no-input ../../github-actions -o /tmp/ansible_collections/example
     args:
       creates: /tmp/ansible_collections/example/httpd/.github/workflows/CI.yml
 
   - name: create a role
-    command: cookiecutter -f --config-file /tmp/ansible_collections/example/httpd/cookiecutter.yaml --config-file files/role1.yaml --no-input -o /tmp/ansible_collections/example/httpd/roles ../../role role=example.httpd.role1
+    command: cookiecutter -f --config-file files/role1.yaml --no-input -o /tmp/ansible_collections/example/httpd/roles ../../role role=example.httpd.role1
     args:
       creates: /tmp/ansible_collections/example/httpd/roles/role1
 
