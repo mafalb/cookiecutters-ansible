@@ -20,4 +20,6 @@
 
 ## License
 
+Copyright (c) 2021 {{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>
+
 {{ cookiecutter.license }}

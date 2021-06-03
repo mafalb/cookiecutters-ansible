@@ -30,10 +30,12 @@ jobs:
       uses: actions/checkout@v2
 
     - name: install dependencies
-      run: ansible-galaxy collection install -r molecule/requirements.yml
+      run: ansible-galaxy collection install mafalb.ansible
 
     - name: install molecule
-      run: ansible-playbook -D molecule/install_molecule.yml -t all,debug
+      run: |
+        sudo apt-get install ansible
+        /usr/bin/ansible-playbook -D ~/.ansible/collections/ansible_collections/mafalb/ansible/playbooks/molecule.yml -t all,debug
 
     - name: molecule tests
       run: |
