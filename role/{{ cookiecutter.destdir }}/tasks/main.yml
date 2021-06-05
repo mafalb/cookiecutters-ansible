@@ -1,9 +1,21 @@
 # vim: set ft=yaml ts=2 expandtab:
 ---
 {% raw %}
-- name: include OS specific variables
-  include_vars: "{{ item }}"
+- name: get OS specific variables
   with_first_found:
+  - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+  - "{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
+  - "{{ ansible_distribution }}.yml"
   - "{{ ansible_os_family }}.yml"
+  include_vars:
+    file: "{{ item }}"
 {% endraw %}
+- name: assertions
+  assert:
+    that:
+    - {{ cookiecutter.role|replace('.','_') }}_state in [ 'present', 'absent' ]
+
+- name: include_tasks for {{ cookiecutter.role|replace('.','_') }}_state
+  include_tasks: "{% raw %}{{{% endraw %} {{ cookiecutter.role|replace('.','_') }}_state {% raw %}}}{% endraw%}.yml"
+
 ...
