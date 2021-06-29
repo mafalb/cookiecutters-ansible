@@ -43,7 +43,7 @@ tags:
 dependencies: {}
 
 # The URL of the originating SCM repository
-repository: https://github.com/mafalb/ansible-collection-ansible
+repository: {{ cookiecutter.repository_url }}
 
 # The URL to any online docs
 documentation: {{ cookiecutter.repository_url }}
