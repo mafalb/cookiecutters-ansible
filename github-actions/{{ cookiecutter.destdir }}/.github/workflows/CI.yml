@@ -31,6 +31,7 @@ jobs:
         - fedora34
         - c8s
         - alma8
+        - rocky8
         - centos7
         - centos8
         - debian9
@@ -42,6 +43,7 @@ jobs:
         ansible_version:
         - '2.9'
         - '2.10'
+        - '2.11'
 
         include:
 
@@ -64,6 +66,11 @@ jobs:
           version: 8
           test_molecule: true
           test_controlnode: true
+
+        - target: rocky8
+          distribution: rockylinux
+          registry: "quay.io/rockylinux/"
+          tag: '8'
 
         - target: centos7
           distribution: centos
@@ -118,11 +125,15 @@ jobs:
     - name: get mafalb.ansible
       run: ansible-galaxy collection install mafalb.ansible
 {% raw %}
+    # use system ansible
+    #
     - name: install molecule
       run: |
         sudo apt-get install ansible
         /usr/bin/ansible-playbook -D ~/.ansible/collections/ansible_collections/mafalb/ansible/playbooks/molecule.yml -e molecule_ansible_version=${{ matrix.ansible_version }} -t all,debug
 
+    # use our ansible
+    #
     - name: check ansible version
       run: |
         source ~/.virtualenvs/molecule/bin/activate
