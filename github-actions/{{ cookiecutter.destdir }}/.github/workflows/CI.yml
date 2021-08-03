@@ -36,9 +36,10 @@ jobs:
         - centos8
         - debian9
         - debian10
-        - ubuntu-16.04
-        - ubuntu-18.04
-        - ubuntu-20.04
+        - ubuntu16
+        - ubuntu18
+        - ubuntu20
+        - ubuntu2104
 
         ansible_version:
         - '2.9'
@@ -48,64 +49,49 @@ jobs:
         include:
 
         - target: fedora33
-          distribution: fedora
-          version: 33
+          image: docker.io/fedora:33
 
         - target: fedora34
-          distribution: fedora
-          version: 34
+          image: docker.io/fedora:34
 
         - target: c8s
-          distribution: centos
-          registry: "quay.io/centos/"
-          version: stream8
+          image: quay.io/centos/centos:stream8
 
         - target: alma8
-          distribution: almalinux
-          registry: "docker.io/almalinux/"
-          version: 8
-          test_molecule: true
-          test_controlnode: true
+          image: quay.io/almalinux/almalinux:8
 
         - target: rocky8
-          distribution: rockylinux
-          registry: "quay.io/rockylinux/"
-          tag: '8'
+          image: quay.io/rockylinux/rockylinux:8
 
         - target: centos7
-          distribution: centos
-          version: 7
+          image: quay.io/centos/centos:7
 
         - target: centos8
-          distribution: centos
-          version: 8
+          image: quay.io/centos/centos:8
 
         - target: debian9
-          distribution: debian
-          version: stretch
+          image: docker.io/debian:stretch
 
         - target: debian10
-          distribution: debian
-          version: buster
+          image: docker.io/debian:buster
 
-        - target: ubuntu-16.04
-          distribution: ubuntu
-          version: xenial
+        - target: ubuntu16
+          image: docker.io/ubuntu:xenial
 
-        - target: ubuntu-18.04
-          distribution: ubuntu
-          version: bionic
+        - target: ubuntu18
+          image: docker.io/ubuntu:bionic
 
-        - target: ubuntu-20.04
-          distribution: ubuntu
-          version: focal
+        - target: ubuntu20
+          image: docker.io/ubuntu:focal
+
+        - target: ubuntu2104
+          image: docker.io/ubuntu:hirsute
 
     env:
 {% raw %}      
       ANSIBLE_VERSION: ${{ matrix.ansible_version }}
-      CI_REGISTRY: ${{ matrix.registry }}
-      CI_CONTAINER_IMAGE: ${{ matrix.distribution }}
-      CI_CONTAINER_TAG: ${{ matrix.version }}
+      CI_IMAGE: ${{ matrix.image }}
+      CI_HOSTNAME: ci-${{ matrix.target }}
       PY_COLORS: 1
       ANSIBLE_FORCE_COLOR: 1
 {% endraw %} 
@@ -120,17 +106,11 @@ jobs:
       with:
         path: ansible_collections/{{ cookiecutter.namespace }}/{{ cookiecutter.collection_name }}
 
-    # use the github actions ansible
-    #
-    - name: get mafalb.ansible
-      run: ansible-galaxy collection install mafalb.ansible
 {% raw %}
-    # use system ansible
-    #
     - name: install molecule
       run: |
-        sudo apt-get install ansible
-        /usr/bin/ansible-playbook -D ~/.ansible/collections/ansible_collections/mafalb/ansible/playbooks/molecule.yml -e molecule_ansible_version=${{ matrix.ansible_version }} -t all,debug
+        ansible-galaxy collection install mafalb.ansible
+        ansible-playbook -e ansible_python_interpreter=python3 -D ~/.ansible/collections/ansible_collections/mafalb/ansible/playbooks/molecule.yml -e molecule_ansible_version=${{ matrix.ansible_version }} -t all,debug
 
     # use our ansible
     #
