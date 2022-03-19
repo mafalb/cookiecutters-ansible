@@ -45,7 +45,7 @@ cookiecutter\
 ```bash
 cookiecutter\
  --overwrite-if-exists\
- --config-file httpd/cookiecutter.yaml --no-input\
+ --config-file httpd/cookiecutter.yaml\
  https://github.com/mafalb/cookiecutters-ansible --directory role
 ```
 
