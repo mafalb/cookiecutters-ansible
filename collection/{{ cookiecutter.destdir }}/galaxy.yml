@@ -1,6 +1,6 @@
-# Copyright (c) {% now 'utc', '%Y' %} {% cookiecutter.author_name %} <{% cookiecutter.author_email %}>
-# SPDX-License-Identifier: {% cookiecutter.license %}
-# see LICENSE or https://spdx.org/licenses/{% cookiecutter.license %}.html
+# Copyright (c) {% now 'utc', '%Y' %} {{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>
+# SPDX-License-Identifier: {{ cookiecutter.license }}
+# see LICENSE or https://spdx.org/licenses/{{ cookiecutter.license }}.html
 ---
 
 # The namespace of the collection. This can be a company/brand/organization or product namespace under which all
